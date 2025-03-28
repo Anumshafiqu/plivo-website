@@ -1,0 +1,501 @@
+<nav class="navbar navbar-expand-lg bg-white fixed-top" [ngClass]="{ 'shadow-lg': isScrolled }">
+    <div class="menu-icon text-white  d-lg-none" (click)="toggleMenu()">☰</div>
+    <a class="navbar-brand" href="#"><img src="../../../assets/67cabbf40eef5aedf3b64eb9_Union.svg" alt=""
+            class="w-5rem h-5rem ml-7"></a>
+    <div class="menu-container" *ngIf="isMenuOpen">
+        <div class="d-flex ">
+            <button class="close-btn mt-2 ml-auto icon-child-1 small fs-6" (click)="toggleMenu()"><i class="fa fa-close"
+                    aria-hidden="true"></i></button>
+        </div>
+        <div *ngIf="menuStack.length > 0" class="menu-header ml-4 fw-bold fs-6">
+            <button (click)="goBack()" class="fw-bold small mt-2"><i class="fa fa-chevron-left"
+                    aria-hidden="true"></i></button>
+        </div>
+        <ul class="mt-4">
+            <li *ngFor="let item of currentMenu" (click)="navigateTo(item)" class="icon-child ">
+                {{ item.label }}
+                <span *ngIf="item.children">›</span>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+
+        <div class="collapse navbar-collapse justify-content-center ml-8" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown position-static">
+                    <a class="nav-link dropdown-toggle fw-bold mx-2" href="#" role="button" data-bs-toggle="dropdown">
+                        Products
+                    </a>
+                    <div class="dropdown-menu w-100 mega-menu">
+                        <div class="container mx-8">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="fw-bold">Popular Keywords</h6>
+                                    <div class="dropdown-columns">
+                                        <ul>
+                                            <li *ngFor="let keyword of popularKeywords" class="small fw-medium">{{
+                                                keyword }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="fw-bold">Top Industries</h6>
+                                    <div class="dropdown-columns">
+                                        <ul>
+                                            <li *ngFor="let industry of topIndustries" class="small fw-medium">{{
+                                                industry }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+
+
+                <li class="nav-item dropdown position-static">
+                    <a class="nav-link dropdown-toggle fw-bold mx-2" href="#" role="button" data-bs-toggle="dropdown">
+                        solutions
+                    </a>
+                    <div class="dropdown-menu w-100 mega-menu menu-item">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="fw-bold">Popular Keywords</h6>
+                                    <div class="dropdown-columns">
+                                        <ul>
+                                            <li *ngFor="let keyword of businessKeywords" class="small fw-medium">{{
+                                                keyword }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="fw-bold">Top Industries</h6>
+                                    <div class="dropdown-columns">
+                                        <ul>
+                                            <li *ngFor="let industry of businessIndustries" class="small fw-medium">{{
+                                                industry }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown position-static">
+                            <a class="nav-link dropdown-toggle fw-bold mx-2" href="#" role="button"
+                                data-bs-toggle="dropdown">
+                                Resourses
+                            </a>
+                            <div class="dropdown-menu w-100 mega-menu menu-item">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h6 class="fw-bold">Social Media Covers</h6>
+                                            <div class="dropdown-columns">
+                                                <ul>
+                                                    <li *ngFor="let cover of socialCovers" class="small fw-medium">{{
+                                                        cover }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h6 class="fw-bold">Social Media Posts</h6>
+                                            <div class="dropdown-columns">
+                                                <ul>
+                                                    <li *ngFor="let post of socialPosts" class="small fw-medium">{{ post
+                                                        }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h6 class="fw-bold">Social Media Profile Pictures</h6>
+                                            <div class="dropdown-columns">
+                                                <ul>
+                                                    <li *ngFor="let profile of socialProfiles" class="small fw-medium">
+                                                        {{ profile }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <li class="nav-item dropdown position-static">
+                    <a class="nav-link dropdown-toggle fw-bold mx-2" href="#" role="button" data-bs-toggle="dropdown">
+                        Pricing
+                    </a>
+                    <div class="dropdown-menu mega-menu menu-item-1">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="dropdown-row mt-1">
+                                        <ul>
+                                            <li *ngFor="let keyword of socailIndustries" class="small fw-medium">{{
+                                                keyword }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <div class="ml-4">
+                    <button class="btn btn-dark small px-4 fw-medium">Book a Demo</button>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container hearder-section">
+    <div class="row">
+        <!-- Left Content -->
+        <div class="col-md-6 text-md-start text-center">
+            <h1 class="fw-bold fs-1">Build customer loyalty.<br>Scale cost-efficiently.</h1>
+            <p class="fs-6 mt-4 fw-medium">The all-in-one CX suite that simplifies marketing, automates customer
+                service, and fuels growth.</p>
+            <div class="">
+                <button class="btn btn-dark small px-4 fw-medium">Book a Demo</button>
+            </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="col-md-6 position-relative text-center">
+            <img src="../../../assets/666c01b4896ac2b0b1c961d4_Group 44785-min-p-500.png"
+                class="img-fluid h-20rem w-25rem" alt="Customer Engagement">
+        </div>
+    </div>
+</div>
+
+<div class="container text-center my-5">
+    <p class="fw-normal">Join thousands of innovative businesses that rely on Plivo for their customer engagement</p>
+
+    <div class="overflow-hidden position-relative">
+        <div class="d-flex flex-nowrap gap-6" id="logoCarousel"
+            [ngStyle]="{'transform': 'translateX(' + position + 'px)'}">
+            <img *ngFor="let logo of logos" [src]="logo" class="img-fluid" width="100" alt="Company Logo">
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row ml-8">
+        <h2 class="text-center mt-5">Impact at every step of the journey</h2>
+        <p class="text-center my-4 fw-medium">Make customers happy and drive sustainable business growth.</p>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 custom-card mt-4">
+            <p-card class="custom-card card">
+                <ng-template pTemplate="header">
+                    <img src="../../../assets/download (7).jpg" alt="" class="images-1 h-7rem">
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <h5 class="fw-bold mx-3 mt-4 text-center">Attract new customers</h5>
+                    <p class="small mx-7 text-center mt-3 fw-medium">Personalize your outreach from the very first
+                        message to stand out to potential new customers.</p>
+                </ng-template>
+            </p-card>
+        </div>
+        <!-- <img src="../../../assets/66f412f5f7ce817de7692092_Line 13.svg" alt="" class="w-5rem ml-4"> -->
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 mx-2 custom-card mt-4">
+            <p-card class="custom-card card">
+                <ng-template pTemplate="header">
+                    <img src="../../../assets/download (7).jpg" alt="" class="images-1 h-7rem">
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <h5 class="fw-bold mx-3 mt-4 text-center">Supercharge your sales</h5>
+                    <p class="small mx-7 text-center mt-3 fw-medium">Increase conversions in a few clicks by delivering
+                        the right message at the right time.</p>
+                </ng-template>
+            </p-card>
+        </div>
+
+    </div>
+
+    <div class="row mt-4 ml-8">
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 custom-card">
+
+            <p-card class="custom-card card">
+                <ng-template pTemplate="header">
+                    <img src="../../../assets/download (7).jpg" alt="" class="images-1 h-7rem">
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <h5 class="fw-bold mx-3 mt-4 text-center">Grow your business</h5>
+                    <p class="small mx-7 text-center mt-3 fw-medium">Higher loyalty translates to higher profit.
+                        Increasing customer retention rates by 5% will increase profits by 25% to 95%.</p>
+                </ng-template>
+            </p-card>
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 custom-card mx-2">
+            <p-card class="custom-card card">
+                <ng-template pTemplate="header">
+                    <img src="../../../assets/download (7).jpg" alt="" class="images-1 h-7rem">
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <h5 class="fw-bold mx-3 mt-4 text-center">Excel in customer care</h5>
+                    <p class="small mx-7 text-center mt-3 fw-medium">Provide omnichannel support 24/7 to keep your
+                        customers happy and increase loyalty 5% will increase profits by 25% to 95%..</p>
+                </ng-template>
+            </p-card>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <h1 class="fw-bold fs-1 text-center mt-6">Maximize revenue, minimize cost</h1>
+        <p class="mt-2 fw-medium text-center">One platform, two powerful solutions</p>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <p-card class="card shadow border-0">
+                <ng-template pTemplate="header">
+                    <img src="../../../assets/65f404e4dc32a78e298a7f04_Service_image-p-500.png" alt=""
+                        class="images-1 h-15rem">
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <h4 class="fw-bold mx-3 my-4 mt-5 text-center">Service</h4>
+                    <p class="fw-medium mx-7 text-center mt-3 mb-4">Deliver exceptional service by combining live chat,
+                        voice, SMS, and WhatsApp into one view.</p>
+                    <div class="justify-content-center align-itmes-center d-flex mb-4">
+                        <button class="btn fw-bold">Explore service <i class="fa fa-arrow-left"
+                                aria-hidden="true"></i></button>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <p-card class="card shadow border-0">
+                <ng-template pTemplate="header">
+                    <img src="../../../assets/65f404e11132d60af933ee18_Engage_image-p-800.png" alt=""
+                        class="images-1 h-15rem">
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <h4 class="fw-bold mx-3 my-4 mt-5 text-center">CX Engage</h4>
+                    <p class="mx-4 fw-medium text-center mt-3 fw-medium mb-4">Deliver exceptional service by combining
+                        live chat, voice, SMS, and WhatsApp into one view.</p>
+                    <div class="justify-content-center align-itmes-center d-flex mb-4">
+                        <button class="btn fw-bold">Explore Engage <i class="fa fa-arrow-left"
+                                aria-hidden="true"></i></button>
+                    </div>
+                </ng-template>
+
+            </p-card>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row align-items-center">
+        <!-- Left Side: Text Content -->
+        <div class="col-lg-6">
+            <h3 class="fw-bold mt-3">Improve customer acquisition</h3>
+            <p class="mt-3 fw-medium mb-3 fs-6">
+                Automate audience segmentation based on key<br> attributes like shopping behavior & customer
+                browsing<br>
+                activity.
+                Design hyper-focused messaging powered by AI <br>that responds to unique customer needs.
+            </p>
+            <h6 class="mt-3 border-start border-primary ps-3 mt-4 fw-medium fs-6 mb-5">
+                Companies that excel at personalization generate <br>
+                <span class="fw-bold text-primary fs-4">40% more revenue</span> than avg.
+            </h6>
+            <h6 href="#" class="fw-bold text-dark text-decoration-none fw-bold ml-2">Know more →</h6>
+        </div>
+        <!-- Right Side: Image & Card -->
+        <div class="col-lg-6 ">
+            <img src="../../../assets/666c1f571192dacaa3782395_Group 44622-p-800.png" alt=""
+                class="w-30rem mt-8 h-20rem ml-4">
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container py-5">
+    <div class="row align-items-center">
+        <!-- Left Side: Text Content -->
+
+        <div class="col-lg-6 ">
+            <img src="../../../assets/666c1fc810571f1a60ab476e_Group 44623-p-800.png" alt=""
+                class="w-30rem mt-8 h-20rem ml-4">
+        </div>
+        <!-- Right Side: Image & Card -->
+        <div class="col-lg-6 text-wrap">
+            <h3 class="fw-bold mt-3 ml-4">Increase conversion rates</h3>
+            <p class="mt-3 fw-medium mb-3 fs-6 ml-4">
+                Identify key events—such as cart abandonment, new user<br> sign-up, or product launches—to trigger
+                messaging<br>
+                that meets the customer at the right moment.
+            </p>
+            <h6 class="mt-3 border-start border-primary ps-3 mt-4 fw-medium fs-6 mb-5 ml-4 mx-2">
+
+                Triggered messaging can increase<br>
+                <span class="fw-bold text-primary fs-4">conversion rates by 2,770% </span>compared<br> to messaging
+                blasts.
+            </h6>
+            <h6 href="#" class="fw-bold text-dark text-decoration-none fw-bold ml-4">Know more →</h6>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container py-5">
+    <div class="row align-items-center">
+        <!-- Right Side: Image & Card -->
+        <div class="col-lg-6 text-wrap">
+            <h3 class="fw-bold mt-3">Provide quality customer service</h3>
+            <p class="mt-3 fw-medium mb-3 fs-6">
+                AI bots are available 24/7 to answer customer questions, take action, and resolve requests on all
+                messaging channels within minutes.
+            </p>
+            <h6 class="mt-3 border-start border-primary ps-3 mt-4 fw-medium fs-6 mb-5">
+
+                Automate responses to<br>
+                <span class="fw-bold text-primary fs-4">70% of customer queries </span> <br>and free up agents for
+                high-value tasks.
+            </h6>
+            <h6 href="#" class="fw-bold text-dark text-decoration-none fw-bold ml-2">Know more →</h6>
+        </div>
+        <!-- Left Side: Text Content -->
+        <div class="col-lg-6 ">
+            <img src="../../../assets/666c1fd7eb2fc5afda85d1e6_Group 44672 1-p-800.png" alt=""
+                class="w-30rem mt-4 h-20rem ml-4">
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row align-items-center">
+        <!-- Left Side: Text Content -->
+        <div class="col-lg-6 ">
+            <img src="../../../assets/666c1fe4f0beaeeca1ad32e6_Group 44624-p-800.png" alt=""
+                class="w-30rem mt-8 h-22rem ml-4">
+        </div>
+        <!-- Right Side: Image & Card -->
+        <div class="col-lg-6 text-wrap">
+            <h3 class="fw-bold">Increase customer retention</h3>
+            <p class="mt-3 fw-medium mb-3 fs-6">
+                Share data from across your customer-facing teams to make every customer interaction memorable and
+                personal.
+            </p>
+            <h6 class="mt-3 border-start border-primary ps-3 mt-4 fw-medium fs-6 mb-5">
+
+                Increasing customer retention rates
+                by just 5% wil<br>
+                <span class="fw-bold text-primary fs-4">increase profits by 25%
+                    to 95%.</span>
+            </h6>
+            <h6 href="#" class="fw-bold text-dark text-decoration-none fw-bold ml-2">Know more →</h6>
+        </div>
+    </div>
+</div>
+
+
+<div class="integration-section d-flex flex-column align-items-center text-center">
+    <h1 class="fw-bold mt-5">Plivo CX integrates <br> with your existing tools</h1>
+    <p class="mt-4 text-center">Our platform is designed to integrate with popular CRM, marketing,<br> and help desk tools.</p>
+  
+    <div class="container">
+      <div class="row justify-content-center mt-4">
+        <div class="col-md-2 col-sm-4 col-6 mb-3">
+          <p-card class="integration-card">
+            <img src="../../../assets/674548b684a493076ec51420_Group 44514 (1)-min-p-1600.png" class="images" alt="Integration Logo" />
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column align-items-center justify-content-center text-center p-5" 
+     style="background: linear-gradient(90deg, #7d22ff, #0057ff); min-height: 300px;">
+  <h1 class="fw-bold text-white mt-5">Start building value into every part of the<br> customer experience.</h1>
+  <button class="btn btn-light fw-bold px-3 button-1 mt-4 mb-5">BOOK A DEMO</button>
+</div>
+
+
+<footer class="bg-dark text-white py-5">
+    <div class="container">
+      <div class="row">
+        
+        <!-- CX ENGAGE -->
+        <div class="col-md-3">
+          <h5 class="fw-bold">CX ENGAGE</h5>
+          <h6 class="text-secondary fw-bold mt-3">FEATURES</h6>
+          <ul class="list-unstyled">
+            <li>Audiences</li>
+            <li>Journeys</li>
+            <li>Campaigns</li>
+            <li>CopyWriter AI</li>
+          </ul>
+          <h6 class="text-secondary fw-bold mt-7">SOLUTIONS</h6>
+          <ul class="list-unstyled">
+            <li>eCommerce SMS</li>
+            <li>Shopify SMS</li>
+            <li>Launch Campaigns</li>
+            <li>Cut SMS Costs</li>
+            <li>Send Alerts & Reminders</li>
+            <li>Build Brand Awareness</li>
+            <li>Convert New Shoppers</li>
+            <li>Build Customer Loyalty</li>
+            <li>Drive Repeat Sales</li>
+          </ul>
+        </div>
+  
+        <!-- CX SERVICE -->
+        <div class="col-md-3">
+          <h5 class="fw-bold">CX SERVICE</h5>
+          <h6 class="text-secondary fw-bold mt-3">FEATURES</h6>
+          <ul class="list-unstyled">
+            <li>Unified Agent Desktop</li>
+            <li>Self-Service Chatbot</li>
+            <li>IVR</li>
+            <li>Drag & Drop Workflows</li>
+            <li>Metrics & Reporting</li>
+          </ul>
+          <h6 class="text-secondary fw-bold mt-5">SOLUTIONS</h6>
+          <ul class="list-unstyled">
+            <li>Contact Center</li>
+            <li>Automated Flows</li>
+            <li>In-App Customer Service</li>
+            <li>Proactive Service</li>
+            <li>Shopify eCommerce</li>
+            <li>Cost Saving Self-Service</li>
+          </ul>
+        </div>
+  
+        <!-- RESOURCES -->
+        <div class="col-md-3">
+          <h5 class="fw-bold">RESOURCES</h5>
+          <ul class="list-unstyled mt-3">
+            <li>Blog</li>
+            <li>Learn</li>
+            <li>Content Hub</li>
+            <li>Video Hub</li>
+            <li>Downloads</li>
+          </ul>
+        </div>
+  
+        <!-- QUICK LINKS -->
+        <div class="col-md-3">
+          <h5 class="fw-bold">QUICK LINKS</h5>
+          <ul class="list-unstyled mt-3">
+            <li>Service Pricing</li>
+            <li>Engage Pricing</li>
+            <li>About Plivo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  
