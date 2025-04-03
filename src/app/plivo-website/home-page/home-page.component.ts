@@ -1,8 +1,10 @@
-import { Component , HostListener } from '@angular/core';
+import { Component , HostListener , Renderer2 } from '@angular/core';
 interface MenuItem {
   label: string;
   children?: MenuItem[];
 }
+import { PRIME_NG_CONFIG} from 'primeng/config';
+import Aura from '@primeng/themes/aura';
 
 interface LogoCategory {
   name: string;
@@ -365,5 +367,25 @@ export class HomePageComponent {
       }
     }, 35); // Adjust speed with interval
   }
+  // toggleDarkMode() {
+  //   document.documentElement.classList.toggle('my-app-dark');
+  // }
+  // toggleDarkMode() {
+  //   const element = document.querySelector('body');
+  //   element?.classList.toggle('my-app-dark');
+  //   document.body.classList.toggle('dark-theme');
+  // }
+  // toggleDarkMode() {
+  //   document.body.classList.toggle('dark-theme');
+  // }
+  isDarkMode: boolean = false;
+
+  toggleDarkMode() {
+    const element = document.querySelector('body');
+    element?.classList.toggle('my-app-dark');
+    this.isDarkMode = !this.isDarkMode;
+    document.body.classList.toggle('dark-theme', this.isDarkMode);
+  }
+
 
 }

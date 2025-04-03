@@ -1,4 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-white fixed-top" [ngClass]="{ 'shadow-lg': isScrolled }">
+<!-- [ngClass]="{ 'shadow-lg': isScrolled }" -->
+<nav class="navbar navbar-expand-lg bg-white fixed-top"
+    [ngClass]="{ 'bg-dark': isDarkMode, 'bg-white': !isDarkMode, 'shadow-lg': isScrolled }">
     <div class="menu-icon text-white  d-lg-none" (click)="toggleMenu()">☰</div>
     <a class="navbar-brand" href="#"><img src="../../../assets/67cabbf40eef5aedf3b64eb9_Union.svg" alt=""
             class="w-5rem h-5rem ml-7"></a>
@@ -153,16 +155,24 @@
                 <div class="ml-4">
                     <button class="btn btn-dark small px-4 fw-medium">Book a Demo</button>
                 </div>
+                <!-- <button pButton label="Toggle Dark Mode" (click)="toggleDarkMode()"></button> -->
+                <!-- <button pButton label="Toggle Dark Mode" (click)="toggleDarkMode()"></button> -->
+                <div class="fw-medium small ml-5 mt-2">
+                    <p-button label="" (onClick)="toggleDarkMode()" class="my-app-dark">Dark Mode</p-button>
+                </div>
+
+
+
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="container hearder-section">
-    <div class="row">
+<div class="container mt-8">
+    <div class="row mt-8">
         <!-- Left Content -->
         <div class="col-md-6 text-md-start text-center">
-            <h1 class="fw-bold fs-1">Build customer loyalty.<br>Scale cost-efficiently.</h1>
+            <h1 class="fw-bold fs-1 mt-8">Build customer loyalty.<br>Scale cost-efficiently.</h1>
             <p class="fs-6 mt-4 fw-medium">The all-in-one CX suite that simplifies marketing, automates customer
                 service, and fuels growth.</p>
             <div class="">
@@ -171,7 +181,7 @@
         </div>
 
         <!-- Right Image -->
-        <div class="col-md-6 position-relative text-center">
+        <div class="col-md-6 position-relative text-center mt-8">
             <img src="../../../assets/666c01b4896ac2b0b1c961d4_Group 44785-min-p-500.png"
                 class="img-fluid h-20rem w-25rem" alt="Customer Engagement">
         </div>
@@ -197,7 +207,7 @@
         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 custom-card mt-4">
             <p-card class="custom-card card">
                 <ng-template pTemplate="header">
-                    <img src="../../../assets/download (7).jpg" alt="" class="images-1 h-7rem">
+                    <img src="../../../assets/download (7).jpg" alt="" class="images-1 h-7rem w-100">
                 </ng-template>
                 <ng-template pTemplate="content">
                     <h5 class="fw-bold mx-3 mt-4 text-center">Attract new customers</h5>
@@ -210,7 +220,7 @@
         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 mx-2 custom-card mt-4">
             <p-card class="custom-card card">
                 <ng-template pTemplate="header">
-                    <img src="../../../assets/download (7).jpg" alt="" class="images-1 h-7rem">
+                    <img src="../../../assets/download (7).jpg" alt="" class="images-1 h-7rem w-100">
                 </ng-template>
                 <ng-template pTemplate="content">
                     <h5 class="fw-bold mx-3 mt-4 text-center">Supercharge your sales</h5>
@@ -228,7 +238,7 @@
 
             <p-card class="custom-card card">
                 <ng-template pTemplate="header">
-                    <img src="../../../assets/download (7).jpg" alt="" class="images-1 h-7rem">
+                    <img src="../../../assets/download (7).jpg" alt="" class="images-1 h-7rem w-100">
                 </ng-template>
                 <ng-template pTemplate="content">
                     <h5 class="fw-bold mx-3 mt-4 text-center">Grow your business</h5>
@@ -240,7 +250,7 @@
         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 custom-card mx-2">
             <p-card class="custom-card card">
                 <ng-template pTemplate="header">
-                    <img src="../../../assets/download (7).jpg" alt="" class="images-1 h-7rem">
+                    <img src="../../../assets/download (7).jpg" alt="" class="images-1 h-7rem w-100">
                 </ng-template>
                 <ng-template pTemplate="content">
                     <h5 class="fw-bold mx-3 mt-4 text-center">Excel in customer care</h5>
@@ -401,101 +411,131 @@
 </div>
 
 
-<div class="integration-section d-flex flex-column align-items-center text-center">
+<!-- <div class="integration-section d-flex flex-column align-items-center text-center">
     <h1 class="fw-bold mt-5">Plivo CX integrates <br> with your existing tools</h1>
-    <p class="mt-4 text-center">Our platform is designed to integrate with popular CRM, marketing,<br> and help desk tools.</p>
-  
-    <div class="container">
-      <div class="row justify-content-center mt-4">
-        <div class="col-md-2 col-sm-4 col-6 mb-3">
-          <p-card class="integration-card">
-            <img src="../../../assets/674548b684a493076ec51420_Group 44514 (1)-min-p-1600.png" class="images" alt="Integration Logo" />
-          </p-card>
-        </div>
-      </div>
-    </div>
-  </div>
+    <p class="mt-4 text-center">Our platform is designed to integrate with popular CRM, marketing,<br> and help desk
+        tools.</p>
 
-  <div class="d-flex flex-column align-items-center justify-content-center text-center p-5" 
-     style="background: linear-gradient(90deg, #7d22ff, #0057ff); min-height: 300px;">
-  <h1 class="fw-bold text-white mt-5">Start building value into every part of the<br> customer experience.</h1>
-  <button class="btn btn-light fw-bold px-3 button-1 mt-4 mb-5">BOOK A DEMO</button>
+    <div class="container">
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-2 col-sm-4 col-6 mb-3">
+                <p-card class="integration-card">
+                    <img src="../../../assets/674548b684a493076ec51420_Group 44514 (1)-min-p-1600.png" class="images"
+                        alt="Integration Logo" />
+                </p-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex flex-column align-items-center justify-content-center text-center p-5"
+    style="background: linear-gradient(90deg, #7d22ff, #0057ff); min-height: 300px;">
+    <h1 class="fw-bold text-white mt-5">Start building value into every part of the<br> customer experience.</h1>
+    <button class="btn btn-light fw-bold px-3 button-1 mt-4 mb-5">BOOK A DEMO</button>
+</div> -->
+
+
+
+<div class="d-flex flex-column align-items-center text-center" 
+>
+    <h1 class="fw-bold mt-5">Plivo CX integrates <br> with your existing tools</h1>
+    <p class="mt-4 text-center">Our platform is designed to integrate with popular CRM, marketing,<br> and help desk
+        tools.</p>
+
+    <div class="container">
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-2 col-sm-4 col-6 mb-3">
+                <p-card class="integration-card">
+                    <img src="../../../assets/674548b684a493076ec51420_Group 44514 (1)-min-p-1600.png" class="images"
+                        alt="Integration Logo" />
+                </p-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- This div will apply gradient in light theme and dark color in dark theme -->
+<div class="d-flex flex-column align-items-center justify-content-center text-center p-5"
+  [ngClass]="{
+    'light-theme-section': !isDarkMode,
+    'dark-theme-section': isDarkMode
+  }">
+    <h1 class="fw-bold text-white mt-5">Start building value into every part of the<br> customer experience.</h1>
+    <button class="btn btn-light fw-bold px-3 button-1 mt-4 mb-5">BOOK A DEMO</button>
 </div>
 
 
 <footer class="bg-dark text-white py-5">
     <div class="container">
-      <div class="row">
-        
-        <!-- CX ENGAGE -->
-        <div class="col-md-3">
-          <h5 class="fw-bold">CX ENGAGE</h5>
-          <h6 class="text-secondary fw-bold mt-3">FEATURES</h6>
-          <ul class="list-unstyled">
-            <li>Audiences</li>
-            <li>Journeys</li>
-            <li>Campaigns</li>
-            <li>CopyWriter AI</li>
-          </ul>
-          <h6 class="text-secondary fw-bold mt-7">SOLUTIONS</h6>
-          <ul class="list-unstyled">
-            <li>eCommerce SMS</li>
-            <li>Shopify SMS</li>
-            <li>Launch Campaigns</li>
-            <li>Cut SMS Costs</li>
-            <li>Send Alerts & Reminders</li>
-            <li>Build Brand Awareness</li>
-            <li>Convert New Shoppers</li>
-            <li>Build Customer Loyalty</li>
-            <li>Drive Repeat Sales</li>
-          </ul>
+        <div class="row">
+
+            <!-- CX ENGAGE -->
+            <div class="col-md-3">
+                <h5 class="fw-bold">CX ENGAGE</h5>
+                <h6 class="text-secondary fw-bold mt-3">FEATURES</h6>
+                <ul class="list-unstyled">
+                    <li>Audiences</li>
+                    <li>Journeys</li>
+                    <li>Campaigns</li>
+                    <li>CopyWriter AI</li>
+                </ul>
+                <h6 class="text-secondary fw-bold mt-7">SOLUTIONS</h6>
+                <ul class="list-unstyled">
+                    <li>eCommerce SMS</li>
+                    <li>Shopify SMS</li>
+                    <li>Launch Campaigns</li>
+                    <li>Cut SMS Costs</li>
+                    <li>Send Alerts & Reminders</li>
+                    <li>Build Brand Awareness</li>
+                    <li>Convert New Shoppers</li>
+                    <li>Build Customer Loyalty</li>
+                    <li>Drive Repeat Sales</li>
+                </ul>
+            </div>
+
+            <!-- CX SERVICE -->
+            <div class="col-md-3">
+                <h5 class="fw-bold">CX SERVICE</h5>
+                <h6 class="text-secondary fw-bold mt-3">FEATURES</h6>
+                <ul class="list-unstyled">
+                    <li>Unified Agent Desktop</li>
+                    <li>Self-Service Chatbot</li>
+                    <li>IVR</li>
+                    <li>Drag & Drop Workflows</li>
+                    <li>Metrics & Reporting</li>
+                </ul>
+                <h6 class="text-secondary fw-bold mt-5">SOLUTIONS</h6>
+                <ul class="list-unstyled">
+                    <li>Contact Center</li>
+                    <li>Automated Flows</li>
+                    <li>In-App Customer Service</li>
+                    <li>Proactive Service</li>
+                    <li>Shopify eCommerce</li>
+                    <li>Cost Saving Self-Service</li>
+                </ul>
+            </div>
+
+            <!-- RESOURCES -->
+            <div class="col-md-3">
+                <h5 class="fw-bold">RESOURCES</h5>
+                <ul class="list-unstyled mt-3">
+                    <li>Blog</li>
+                    <li>Learn</li>
+                    <li>Content Hub</li>
+                    <li>Video Hub</li>
+                    <li>Downloads</li>
+                </ul>
+            </div>
+
+            <!-- QUICK LINKS -->
+            <div class="col-md-3">
+                <h5 class="fw-bold">QUICK LINKS</h5>
+                <ul class="list-unstyled mt-3">
+                    <li>Service Pricing</li>
+                    <li>Engage Pricing</li>
+                    <li>About Plivo</li>
+                </ul>
+            </div>
         </div>
-  
-        <!-- CX SERVICE -->
-        <div class="col-md-3">
-          <h5 class="fw-bold">CX SERVICE</h5>
-          <h6 class="text-secondary fw-bold mt-3">FEATURES</h6>
-          <ul class="list-unstyled">
-            <li>Unified Agent Desktop</li>
-            <li>Self-Service Chatbot</li>
-            <li>IVR</li>
-            <li>Drag & Drop Workflows</li>
-            <li>Metrics & Reporting</li>
-          </ul>
-          <h6 class="text-secondary fw-bold mt-5">SOLUTIONS</h6>
-          <ul class="list-unstyled">
-            <li>Contact Center</li>
-            <li>Automated Flows</li>
-            <li>In-App Customer Service</li>
-            <li>Proactive Service</li>
-            <li>Shopify eCommerce</li>
-            <li>Cost Saving Self-Service</li>
-          </ul>
-        </div>
-  
-        <!-- RESOURCES -->
-        <div class="col-md-3">
-          <h5 class="fw-bold">RESOURCES</h5>
-          <ul class="list-unstyled mt-3">
-            <li>Blog</li>
-            <li>Learn</li>
-            <li>Content Hub</li>
-            <li>Video Hub</li>
-            <li>Downloads</li>
-          </ul>
-        </div>
-  
-        <!-- QUICK LINKS -->
-        <div class="col-md-3">
-          <h5 class="fw-bold">QUICK LINKS</h5>
-          <ul class="list-unstyled mt-3">
-            <li>Service Pricing</li>
-            <li>Engage Pricing</li>
-            <li>About Plivo</li>
-          </ul>
-        </div>
-      </div>
     </div>
-  </footer>
-  
-  
+</footer>

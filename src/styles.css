@@ -1,1 +1,91 @@
 
+body.my-app-dark {
+    background-color: #121212;
+    color: #ffffff;
+}
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+  }
+  
+  .dark-theme {
+    --background-color: #121212; /* Dark mode background */
+    --text-color: #ffffff; /* Dark mode text */
+  }
+  
+  /* Apply styles to body */
+  html {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  /* Dark theme styles */
+.my-app-dark .navbar {
+    background-color: #333333; /* Dark background */
+    color: #ffffff; /* Dark text color */
+    box-shadow: none; /* No shadow or darker shadow for dark theme */
+  }
+
+
+
+  /* Default light theme (navbar) */
+.navbar {
+    background-color: #ffffff; /* Light background */
+    color: #000000; /* Light text color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .navbar .nav-link {
+    color: #000; /* Light text color for navbar links */
+  }
+  
+  .navbar .nav-link:hover {
+    color: #0056b3; /* Light hover effect */
+  }
+  
+  /* Dark theme navbar */
+  .dark-theme .navbar {
+    background-color: #333333; /* Dark background */
+    color: #ffffff; /* Dark text color */
+    box-shadow: none; /* No shadow or darker shadow */
+  }
+  
+  .dark-theme .navbar .nav-link {
+    color: #ffffff; /* Dark text color for navbar links */
+  }
+  
+  .dark-theme .navbar .nav-link:hover {
+    color: #ffcc00; /* Dark hover effect */
+  }
+  
+/* Light Theme Styles */
+.light-theme-section {
+    background: linear-gradient(90deg, #7d22ff, #0057ff); /* Blue gradient for light theme */
+    color: white;
+  }
+  
+  /* Dark Theme Styles */
+  .dark-theme-section {
+    background: linear-gradient(90deg, #121212, #121212); /* Darker gradient for dark theme */
+    color: white;
+  }
+
+  /* Light Theme Gradient */
+.light-theme-gradient {
+    background: linear-gradient(90deg, #7d22ff, #0057ff); /* Blue gradient for light theme */
+  }
+  
+  /* Dark Theme Gradient */
+  .dark-theme-gradient {
+    background: linear-gradient(90deg, #2c3e50, #34495e); /* Darker gradient for dark theme */
+  }
+  
+  
+  
+  
+
+  
+ 
+ 
+  
